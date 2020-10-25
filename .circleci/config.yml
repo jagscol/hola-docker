@@ -10,4 +10,4 @@ jobs:
       - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
       - run: docker build -t jagscol/hola-docker:$CIRCLE_SHA1 .
       - run: docker push jagscol/hola-docker:$CIRCLE_SHA1
-      - run: ssh -o StrictHostKeyChecking=no root@http://157.230.183.90/ "/bin/bash /root/docker/deploy.sh $CIRCLE_SHA1"
+      - run: ssh -o StrictHostKeyChecking=no root@157.230.183.90 "/bin/bash /root/docker/deploy.sh $CIRCLE_SHA1"
