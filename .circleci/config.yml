@@ -5,9 +5,9 @@ jobs:
     steps:
       - add_ssh_keys:
           fingerprints: 
-            - "ce:60:dc:87:cd:91:06:1c:e5:4d:f6:bf:c5:02:a5:61"
+            - "7d:f7:3d:0f:06:9a:31:dd:dc:55:84:d7:27:f9:65:8c"
       - checkout
       - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
-      - run: docker build -t pablokbs/hola-docker:$CIRCLE_SHA1 .
-      - run: docker push pablokbs/hola-docker:$CIRCLE_SHA1
-      - run: ssh -o StrictHostKeyChecking=no root@fredrikson.com.ar "/bin/bash /root/docker/deploy.sh $CIRCLE_SHA1"
+      - run: docker build -t jagscol/hola-docker:$CIRCLE_SHA1 .
+      - run: docker push jagscol/hola-docker:$CIRCLE_SHA1
+      - run: ssh -o StrictHostKeyChecking=no root@http://157.230.183.90/ "/bin/bash /root/docker/deploy.sh $CIRCLE_SHA1"
